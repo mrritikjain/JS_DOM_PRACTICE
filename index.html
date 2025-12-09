@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM MANIPULATION</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+      }
+      .q1 {
+        height: 200px;
+        width: 200px;
+        background-color: rgb(245, 194, 194);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        border-radius: 20px;
+        margin: 10px;
+      }
+      button {
+        background-color: black;
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: 10px;
+        margin-bottom: 10px;
+      }
+      p {
+        text-transform: capitalize;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="q1">
+      <button id="btn1">click here</button>
+      <p class="text1">text on which we will add style with DOM</p>
+    </div>
+  </body>
+  <script>
+    /* Q1. Create a html page wiht a button. when click on button paragraph color should be changed . */
+
+    const button1 = document.getElementById("btn1");
+    const pera1 = document.querySelector(".text1");
+
+    button1.addEventListener("click", () => {
+      pera1.style.color = "#fff";
+    });
+  </script>
+</html>
