@@ -14,7 +14,8 @@
       }
       .q1,
       .q2,
-      .q3 {
+      .q3,
+      .q4 {
         min-height: 400px;
         width: 400px;
         background-color: rgb(245, 194, 194);
@@ -51,6 +52,19 @@
       }
       .error {
         color: red;
+      }
+      .item,
+      .text-box {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 20px;
+        border-radius: 10px;
+      }
+      .item li {
+        list-style: none;
+        text-transform: capitalize;
+        font-size: 18px;
       }
     </style>
   </head>
@@ -93,6 +107,15 @@
         <div id="mobileError" class="error"></div>
         <button type="submit" id="btn3">Register</button>
       </form>
+    </div>
+    <div class="q4">
+      <div class="text-box">
+        <input type="text" name="Enter Your text here" id="text-data" />
+        <button class="btn4">Add</button>
+      </div>
+     
+      
+      </div>
     </div>
   </body>
   <script>
@@ -159,5 +182,50 @@
         this.reset();
       }
     });
+
+    //Q4 Create an unordered list. Allow users to add and remove list items dynamically using buttons.
+const textbox = document.getElementById("text-data");
+const addBtn = document.querySelector('.btn4');
+const container = document.querySelector(".q4");
+
+addBtn.addEventListener('click', (e) => {
+  e.preventDefault(); // stop form refresh if inside form
+
+  const textValue = textbox.value.trim();
+
+  if(textValue === ""){
+    alert("Enter something before add");
+    return;
+  }
+
+  // Create item div
+  const item = document.createElement("div");
+  item.classList.add("item");
+
+  // Create li
+  const li = document.createElement("li");
+  li.textContent = textValue;
+
+  // Create delete button
+  const dltbtn = document.createElement('button');
+  dltbtn.classList.add('delete');
+  dltbtn.textContent = "Delete";
+
+  // Delete functionality
+  dltbtn.addEventListener("click", () => {
+    item.remove();
+  });
+
+  // Append items
+  item.appendChild(li);
+  item.appendChild(dltbtn);
+  container.appendChild(item);
+
+  // Clear input after adding
+  textbox.value = "";
+});
+
   </script>
 </html>
+
+
