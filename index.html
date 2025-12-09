@@ -15,7 +15,7 @@
       .q1,
       .q2,
       .q3,
-      .q4 {
+      .q4,.q6 {
         min-height: 400px;
         width: 400px;
         background-color: rgb(245, 194, 194);
@@ -113,8 +113,13 @@
         <input type="text" name="Enter Your text here" id="text-data" />
         <button class="btn4">Add</button>
       </div>
-     
-      
+      </div>
+    </div>
+    <div class="q6">
+      <h3 id="counter"></h3>
+      <div class="buttons">
+        <button class="startbtn">Start</button>
+         <button class="stopbtn">Stop</button>
       </div>
     </div>
   </body>
@@ -224,7 +229,29 @@ addBtn.addEventListener('click', (e) => {
   // Clear input after adding
   textbox.value = "";
 });
+// Q5 - Create a tabbed interface where clicking on tabs display different content sections without reloading page 
 
+//Q6 create a counter that update every second and add start and stop button on it
+
+const counter = document.getElementById('counter');
+const startbtn = document.querySelector('.startbtn');
+const stopbtn = document.querySelector('.stopbtn');
+
+let count = 0;
+let interval = null;
+
+startbtn.addEventListener("click", () => {
+ 
+
+  interval = setInterval(() => {
+    counter.innerText = count++;
+  }, 1000);
+});
+
+stopbtn.addEventListener("click", () => {
+  clearInterval(interval);
+  interval = null;  // allow start again
+});
   </script>
 </html>
 
