@@ -13,8 +13,9 @@
       body {
       }
       .q1,
-      .q2 {
-        height: 400px;
+      .q2,
+      .q3 {
+        min-height: 400px;
         width: 400px;
         background-color: rgb(245, 194, 194);
         display: flex;
@@ -40,6 +41,17 @@
         width: 200px;
         margin: 10px;
       }
+      input {
+        width: 300px;
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 10px;
+        border: none;
+        background-color: #fffdfd7d;
+      }
+      .error {
+        color: red;
+      }
     </style>
   </head>
   <body>
@@ -60,6 +72,28 @@
       />
       <button id="btn2">swap</button>
     </div>
+    <div class="q3">
+      <form action="">
+        <input type="text" placeholder="Enter your name" id="name" />
+        <div id="nameError"></div>
+        <input type="email" placeholder="Enter your Email" id="email" />
+        <div id="emailError" class="error"></div>
+        <input
+          type="password"
+          placeholder="Enter your password"
+          id="password"
+        />
+        <div id="passwordError" class="error"></div>
+        <input
+          type="tel"
+          placeholder="Enter your 10 digit mobile number"
+          id="mobile"
+          class="error"
+        />
+        <div id="mobileError" class="error"></div>
+        <button type="submit" id="btn3">Register</button>
+      </form>
+    </div>
   </body>
   <script>
     // Q1. Create a html page wiht a button. when click on button paragraph color should be changed .
@@ -77,8 +111,53 @@
     const btn2 = document.getElementById("btn2");
     btn2.addEventListener("click", () => {
       const temp = image1.src;
-  image1.src = image2.src;
-  image2.src = temp;
+      image1.src = image2.src;
+      image2.src = temp;
+    });
+
+    //Q3 Create a form with input fields and a submit button. use javascript to validate the form and display an error message if the input is invalid.
+    document.querySelector("form").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      let valid = true;
+
+      //Inputs
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value.trim();
+      const mobile = document.getElementById("mobile").value.trim();
+
+      //Error message
+      const nameError = document.getElementById("nameError");
+      const emailError = document.getElementById("emailError");
+      const passwordError = document.getElementById("passwordError");
+      const mobileError = document.getElementById("mobileError");
+
+      nameError.textContent = "";
+      emailError.textContent = "";
+      passwordError.textContent = "";
+      mobileError.textContent = "";
+
+      if (name === "") {
+        nameError.textContent = "Full name is required";
+        valid = false;
+      }
+      if (!email.includes("@") || !email.includes(".")) {
+        emailError.textContent = "Email in not in right formate.";
+        valid = false;
+      }
+      if (password.length < 6) {
+        passwordError.textContent =
+          "Password length should be min 6 character long.";
+        valid = false;
+      }
+      if (!/^\d{10}$/.test(mobile)) {
+        mobileError.textContent = "mobile digit should have 10 numbers";
+      }
+      if (valid) {
+        alert("Registration.successfully");
+        this.reset();
+      }
     });
   </script>
 </html>
