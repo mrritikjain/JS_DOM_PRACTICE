@@ -12,9 +12,10 @@
       }
       body {
       }
-      .q1 {
-        height: 200px;
-        width: 200px;
+      .q1,
+      .q2 {
+        height: 400px;
+        width: 400px;
         background-color: rgb(245, 194, 194);
         display: flex;
         flex-direction: column;
@@ -34,6 +35,11 @@
       p {
         text-transform: capitalize;
       }
+      img {
+        height: 200px;
+        width: 200px;
+        margin: 10px;
+      }
     </style>
   </head>
   <body>
@@ -41,15 +47,38 @@
       <button id="btn1">click here</button>
       <p class="text1">text on which we will add style with DOM</p>
     </div>
+    <div class="q2">
+      <img
+        src="https://images.pexels.com/photos/34385617/pexels-photo-34385617.jpeg"
+        alt="Image1"
+        id="image1"
+      />
+      <img
+        src="https://images.pexels.com/photos/5028377/pexels-photo-5028377.jpeg"
+        alt="image2"
+        id="image2"
+      />
+      <button id="btn2">swap</button>
+    </div>
   </body>
   <script>
-    /* Q1. Create a html page wiht a button. when click on button paragraph color should be changed . */
+    // Q1. Create a html page wiht a button. when click on button paragraph color should be changed .
 
     const button1 = document.getElementById("btn1");
     const pera1 = document.querySelector(".text1");
 
     button1.addEventListener("click", () => {
       pera1.style.color = "#fff";
+    });
+    //Q2. Create a page with 2 images and a button. when the button is clicked, swap the source attribute of the images.
+
+    const image1 = document.getElementById("image1");
+    const image2 = document.getElementById("image2");
+    const btn2 = document.getElementById("btn2");
+    btn2.addEventListener("click", () => {
+      const temp = image1.src;
+  image1.src = image2.src;
+  image2.src = temp;
     });
   </script>
 </html>
