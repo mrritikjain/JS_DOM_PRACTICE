@@ -14,7 +14,7 @@
       .q1,
       .q2,
       .q3,
-      .q4,.q5,.q6 {
+      .q4,.q5,.q6,.q7 {
         min-height: 400px;
         width: 400px;
         background-color: rgb(245, 194, 194);
@@ -80,6 +80,23 @@
         color: #fff;
       }
       .content{
+        display: none;
+      }
+      .download{
+        width: 200px;
+        height: 10px;
+        background-color: rgba(0, 0, 0, 0.284);
+       border-radius: 10px;
+      }
+      .progressbar{
+        width: 90%;
+        background-color: red;
+        height: 100%;
+        border-radius: 10px;
+        transition: cubic-bezier(0.075, 0.82, 0.165, 1) 0.2s;
+      }
+      .q7 h3{
+        margin-bottom: 10px;
         display: none;
       }
     </style>
@@ -153,7 +170,12 @@
          <button class="stopbtn">Stop</button>
       </div>
     </div>
-
+<div class="q7">
+  <h3>Download Completed</h3>
+  <div class="download">
+    <div class="progressbar"></div>
+  </div>
+</div>
   </body>
   <script>
     // Q1. Create a html page wiht a button. when click on button paragraph color should be changed .
@@ -300,6 +322,24 @@ stopbtn.addEventListener("click", () => {
   clearInterval(interval);
   interval = null;  // allow start again
 });
+
+//Q7-Display a progress bar that updates in real-time, showing the progess of task of download.
+const download = document.querySelector(".download");
+const progressbar = document.querySelector(".progressbar");
+const head = document.querySelector(".q7 h3")
+let val = 0
+let timeer = setInterval(() => {
+  if(val<=100){
+  progressbar.style.width= val+ "%";
+  val++;
+  }
+  else{
+    clearInterval(timeer);
+head.style.display = "block";
+  }
+}, 50);
+
+
   </script>
 </html>
 
